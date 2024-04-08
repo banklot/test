@@ -1,19 +1,51 @@
 <script setup>
-import { useLayout } from '@/layout/composables/layout';
-import { computed } from 'vue';
+import moment from "moment-timezone";
+import Logo from "@/layout/composables/Logo.vue";
+import {getVzlanTime} from "@/utils/time";
 
-const { layoutConfig, contextPath } = useLayout();
+let caracasTime = moment().tz("America/Caracas");
 
-const logoUrl = computed(() => {
-    return `${contextPath}images/${layoutConfig.darkTheme.value ? 'logo' : 'logo'}.png`;
-});
 </script>
 
 <template>
-    <div class="layout-footer">
-        <img :src="logoUrl" alt="Logo" height="20" class="mr-2" />
 
-        <span class="font-medium ml-2"></span>
+    <div class="layout-footer justify-content-center flex-wrap ">
+      <div>
+        <Logo height="20" class=""/>
+      </div>
+      <!-- <div class="theDate ">
+        {{ caracasTime.format('D/M/Y') }}
+      </div>
+      &nbsp&nbsp&nbsp
+    
+      <div class="theTime">
+
+        {{ getVzlanTime() }}
+      </div>
+
+      <span class="font-medium ml-2"></span>
+
+        {{ caracasTime.format('HH:MM:SS A') }}
+      </div> -->
+
     </div>
+    
+
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.footer {
+  // background-color: red !important;
+}
+
+.theDate {
+  color: black;
+  font-weight: bold;
+}
+
+.theTime {
+  color: black;
+  font-weight: bold;
+
+}
+</style>

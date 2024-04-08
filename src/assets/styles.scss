@@ -8,3 +8,14 @@ $gutter: 1rem; //for primeflex grid system
 @import 'primeflex/primeflex.scss';
 @import 'primeicons/primeicons.css';
 
+// Main
+@import '@/assets/main.scss';
+//Override
+@import '@/assets/override.scss';
+// Auth components
+@import '@/assets/auth.scss';
+// Forms
+@import '@/assets/forms.scss';
+// Dashboard
+@import '@/assets/dashboard.scss';
+

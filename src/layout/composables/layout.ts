@@ -1,4 +1,4 @@
-import { toRefs, reactive, computed } from 'vue';
+import {toRefs, reactive, computed} from 'vue';
 
 const contextPath = import.meta.env.BASE_URL;
 
@@ -7,17 +7,19 @@ const layoutConfig = reactive({
     darkTheme: false,
     inputStyle: 'outlined',
     menuMode: 'static',
+    cartMode: 'static',
     theme: 'light',
     scale: 14,
     activeMenuItem: null
 });
 
 const layoutState = reactive({
-    staticMenuDesktopInactive: false,
-    overlayMenuActive: false,
+    staticMenuDesktopActive: (window.innerWidth > 991),
+    staticMenuMobileActive: false,
+    staticCartDesktopActive: (window.innerWidth > 991),
+    staticCartMobileActive: false,
     profileSidebarVisible: false,
     configSidebarVisible: false,
-    staticMenuMobileActive: false,
     menuHoverActive: false
 });
 
@@ -36,20 +38,37 @@ export function useLayout() {
     };
 
     const onMenuToggle = () => {
-        if (layoutConfig.menuMode === 'overlay') {
-            layoutState.overlayMenuActive = !layoutState.overlayMenuActive;
-        }
-
         if (window.innerWidth > 991) {
-            layoutState.staticMenuDesktopInactive = !layoutState.staticMenuDesktopInactive;
+            layoutState.staticMenuDesktopActive = !layoutState.staticMenuDesktopActive;
         } else {
             layoutState.staticMenuMobileActive = !layoutState.staticMenuMobileActive;
         }
     };
 
-    const isSidebarActive = computed(() => layoutState.overlayMenuActive || layoutState.staticMenuMobileActive);
+    const onCartToggle = () => {
+        if (window.innerWidth > 991) {
+            layoutState.staticCartDesktopActive = !layoutState.staticCartDesktopActive;
+        } else {
+            layoutState.staticCartMobileActive = !layoutState.staticCartMobileActive;
+        }
+    }
+
+    const isSidebarActive = computed(() => layoutState.staticMenuDesktopActive || layoutState.staticMenuMobileActive);
+    const isCartActive = computed(() => layoutState.staticCartDesktopActive || layoutState.staticCartMobileActive);
 
     const isDarkTheme = computed(() => layoutConfig.darkTheme);
 
-    return { contextPath, layoutConfig: toRefs(layoutConfig), layoutState: toRefs(layoutState), changeThemeSettings, setScale, onMenuToggle, isSidebarActive, isDarkTheme, setActiveMenuItem };
+    return {
+        contextPath,
+        layoutConfig: toRefs(layoutConfig),
+        layoutState: toRefs(layoutState),
+        changeThemeSettings,
+        setScale,
+        onMenuToggle,
+        onCartToggle,
+        isSidebarActive,
+        isCartActive,
+        isDarkTheme,
+        setActiveMenuItem
+    };
 }

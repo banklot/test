@@ -1,0 +1,22 @@
+.label {
+  font-weight: bold;
+}
+.p-error {
+  font-weight: bold;
+  color: #e80b03;
+  //background-color: white !important;
+  //border-radius: 10px;
+  //padding: 2px;
+  //width: 108px;
+}
+
+.inputBox {
+  background-color: var(--surface-400) !important;
+  height: 46px;
+}
+
+.field {
+  display: grid;
+
+}
+

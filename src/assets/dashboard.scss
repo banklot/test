@@ -1,0 +1,27 @@
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  //padding: 10px;
+}
+
+.bgImgCenter {
+  border: solid 1px lightgray;
+  border-radius: 10px;
+  width: 280px;
+  height: 140px;
+  background-repeat: no-repeat;
+  background-position: center;
+  //background-size: cover;
+  //position: relative;
+  box-shadow: 10px 10px 5px lightgray;
+  margin: 10px;
+  //background-size: 240px 200px;
+}
+
+.bgImgCenter:hover {
+  background-color: white !important;
+  //opacity: 30%;
+  filter: invert(0.30);
+  background-size: 260px 240px;
+  cursor: pointer;
+}

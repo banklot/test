@@ -1,7 +1,10 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-import 'primevue/resources/themes/aura-light-blue/theme.css'
+import {createApp} from 'vue';
+import App from '@/App.vue'; // from 'App.vue';
+import {createPinia} from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import router from '@/router';
+import {globalRouter} from "@/router/globalRouter";
+// import vue3GoogleLogin from 'vue3-google-login'
 
 import PrimeVue from 'primevue/config';
 import AutoComplete from 'primevue/autocomplete';
@@ -41,6 +44,7 @@ import Dropdown from 'primevue/dropdown';
 import DynamicDialog from 'primevue/dynamicdialog';
 import Fieldset from 'primevue/fieldset';
 import FileUpload from 'primevue/fileupload';
+import FocusTrap from 'primevue/focustrap';
 import Galleria from 'primevue/galleria';
 import Image from 'primevue/image';
 import InlineMessage from 'primevue/inlinemessage';
@@ -100,28 +104,37 @@ import TreeSelect from 'primevue/treeselect';
 import TreeTable from 'primevue/treetable';
 import TriStateCheckbox from 'primevue/tristatecheckbox';
 import VirtualScroller from 'primevue/virtualscroller';
-import FloatLabel from "primevue/floatlabel";
+import VueCookies from "vue3-cookies";
 
-import CodeHighlight from "@/components/CodeHighlight.vue";
-import BlockViewer from "@/components/BlockViewer.vue";
 
 import '@/assets/styles.scss';
+import AppConf from "@/utils/app";
+
 
 const app = createApp(App);
 
-app.use(router);
-app.use(PrimeVue, { ripple: true });
+const pinia = createPinia();
+
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia);
+
+// Common global config
+app.config.globalProperties.app = AppConf;
+
+app.use(router)
+globalRouter.router = router
+
+app.use(PrimeVue, {ripple: true});
 app.use(ToastService);
 app.use(DialogService);
 app.use(ConfirmationService);
+app.use(VueCookies);
 
+app.directive('focustrap', FocusTrap);
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
 app.directive('ripple', Ripple);
 app.directive('styleclass', StyleClass);
-
-app.component('CodeHighlight', CodeHighlight);
-app.component('BlockViewer', BlockViewer);
 
 app.component('Accordion', Accordion);
 app.component('AccordionTab', AccordionTab);
@@ -212,6 +225,9 @@ app.component('TreeSelect', TreeSelect);
 app.component('TreeTable', TreeTable);
 app.component('TriStateCheckbox', TriStateCheckbox);
 app.component('VirtualScroller', VirtualScroller);
-app.component('FloatLabel', FloatLabel);
 
 app.mount('#app');
+
+export {
+    app
+}
