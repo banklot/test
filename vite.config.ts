@@ -6,7 +6,9 @@ import vue from "@vitejs/plugin-vue";
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
-    server: { port: 8080 },
+    server: { port: 8080, watch: {
+      usePolling: true
+    } },
     plugins: [vue()],
     base: command === "serve" ? "" : "/app-vue/",
     resolve: {
