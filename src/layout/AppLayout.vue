@@ -80,7 +80,7 @@ const isOutsideClicked = (event) => {
 </div>
 
 <div class="layout-main-cont flex justify-content-center mt-2 p-3" >
-  <div class="card mt-7 mr-2 w-19rem pl-2 pr-2" >
+    <div class="card mt-7 mr-2 w-19rem pl-2 pr-2" >
     <SidebarLeft></SidebarLeft>
     Left
   </div>
