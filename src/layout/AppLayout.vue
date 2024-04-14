@@ -1,6 +1,9 @@
 <script setup>
 import { computed, watch, ref } from 'vue';
 import AppTopbar from './AppTopbar.vue';
+import SidebarRight from "./AppSidebarRight.vue";
+import SidebarLeft from "./AppSidebarLeft.vue";
+
 import AppFooter from './AppFooter.vue';
 import AppSidebar from './AppSidebar.vue';
 import { useLayout } from '@/layout/composables/layout';
@@ -57,7 +60,7 @@ const isOutsideClicked = (event) => {
 </script>
 
 <template>
-    <div class="layout-wrapper" :class="containerClass">
+      <!-- <div class="layout-wrapper" :class="containerClass">
         <app-topbar></app-topbar>
         <div class="layout-sidebar">
             <app-sidebar></app-sidebar>
@@ -69,7 +72,29 @@ const isOutsideClicked = (event) => {
             <app-footer></app-footer>
         </div>
         <div class="layout-mask"></div>
-    </div>
+    </div> -->
+<div class="layout-wrapper bg"> 
+
+<div class="topbar">
+  <AppTopbar></AppTopbar>
+</div>
+
+<div class="layout-main-cont flex justify-content-center mt-2 p-3" >
+    <div class="card mt-7 mr-2 w-19rem pl-2 pr-2" >
+    <SidebarLeft></SidebarLeft>
+    Left
+  </div>
+
+  <div class="card mt-7 w-30rem">
+    <RouterView></RouterView>
+    Center
+  </div>
+
+  <div class="card mt-7 ml-2 w-18rem">
+    <SidebarRight></SidebarRight>
+  </div>
+</div>
+</div>
 </template>
 
 <style lang="scss" scoped></style>
