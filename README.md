@@ -3,23 +3,23 @@
 ## Prerequisitos
 * [Docker](https://www.docker.com/)
 
-* #### Codigo fuente
+* #### Código fuente
   * [test](https://github.com/banklot/test)
 
-## Instalacion
+## Instalación
 ```
 $ cd test
 $ docker compose up
 ```
 
 ## Paso 1
-Anadir un boton en el centro horizontal y vertical como indica la imagen.
+Añadir un botón en el centro horizontal y vertical como indica la imagen.
 
 ![img.png](img.png)
 
 ## Paso 2
-Al ser presionado, una ventana emergente (Dialog) deberia aparecer.
-Atencion a los margenes, espacios y alineacion.
+Al presionar el botón, una ventana emergente (Dialog) debería aparecer.
+Atención a los márgenes, espacios y alineación.
 
 ![img_1.png](img_1.png)
  
@@ -37,6 +37,6 @@ Crear una tabla (Datatable) con los datos
 2. Usar las clases de [PrimeFlex](https://primeflex.org/) tanto como sea posible.
 
 ## Notas 
- Los siguientes parametros seran considerados:
-   1. Organizacion y calidad del codigo.
+ Los siguientes parámetros serán considerados:
+   1. Organización y calidad del código.
    2. Velocidad de aprendizaje y desarrollo. 
