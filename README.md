@@ -15,22 +15,23 @@ $ docker compose up
 ## Paso 1
 Añadir un botón en el centro horizontal y vertical como indica la imagen.
 
-![img.png](img.png)
+![img.png](src/assets/images/img.png)
 
 ## Paso 2
 Al presionar el botón, una ventana emergente (Dialog) debería aparecer.
 Atención a los márgenes, espacios y alineación.
 
-![img_1.png](img_1.png)
+![img_1.png](src/assets/images/img_1.png)
  
 ## Paso 3
 Tomar nombre y apellido del paso anterior y desplegarlos en la pantalla principal.
 
-![img_5.png](img_5.png)
+![img_5.png](src/assets/images/img_5.png)
 
 ## Paso 4
-Crear una tabla (Datatable) con los datos
+Crear una tabla (Datatable) con los datos de la funcion apiService.loadData()
 
+![img_2.png](src/assets/images/img_2.png)
 
 ## Condiciones
 1. Todos los componentes deben ser de [PrimeVue](https://primevue.org/)
