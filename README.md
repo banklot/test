@@ -8,6 +8,7 @@
 
 ## Instalación
 ```
+$ git clone https://github.com/banklot/test.git
 $ cd test
 $ docker compose up
 ```
